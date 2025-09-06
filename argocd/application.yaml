@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'git@github.com:tjy-afk/blueblood.git'
+    targetRevision: dev-argocd-in-machineconfig
+    path: gitops/argocd
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  ignoreDifferences:
+    - group: ""
+      kind: Namespace
+      name: kube-system
+      jsonPointers:
+        - /metadata
+    - group: ""
+      kind: Namespace
+      name: kube-public
+      jsonPointers:
+        - /metadata
+    - group: ""
+      kind: Namespace
+      name: kube-node-lease
+      jsonPointers:
+        - /metadata
