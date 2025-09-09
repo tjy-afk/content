@@ -26700,7 +26700,7 @@ spec:
   source:
     path: gitops/argocd
     repoURL: git@github.com:tjy-afk/blueblood.git
-    targetRevision: dev-argocd-in-machineconfig
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true

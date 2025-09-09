@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'git@github.com:tjy-afk/blueblood.git'
-    targetRevision: dev-argocd-in-machineconfig
+    targetRevision: master
     path: gitops/argocd
   destination:
     server: 'https://kubernetes.default.svc'
